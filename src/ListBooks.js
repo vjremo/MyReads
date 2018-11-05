@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import escapeRegExp from 'escape-string-regexp'
 
 class ListBooks extends Component {
     static propTypes = {
       books: PropTypes.array.isRequired,
+      query : PropTypes.string.isRequired
     }
-  
+   
     render() {
         const { books } = this.props
-       
+        const { query } = this.props
+        let showingBooks = []
+        if (query) {
+            const match = new RegExp(escapeRegExp(query), 'i')
+            
+          showingBooks = books.filter((book)=>match.test(book.title))
+        } else {
+          showingBooks = books
+        }
 
         return (
                 <div className="list-books-content">
@@ -17,7 +27,7 @@ class ListBooks extends Component {
                             <h2 className="bookshelf-title">Currently Reading</h2>
                             <div className="bookshelf-books">
                                 <ol className='book-list'>
-                                {books.map((book) => (
+                                {showingBooks.map((book) => (
                                     <li key={book.title}>
                                     <div className="book">
                                     <div className="book-top">
