@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
-import escapeRegExp from 'escape-string-regexp'
 import Shelf from './Shelf'
-import * as BooksAPI from './BooksAPI'
+import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class ListBooks extends Component {
-    constructor(props){
-        super(props)
-        this.state ={
-            books : []
-        }
-    }
-    
-    componentDidMount() {
-        BooksAPI.getAll().then((books) => {
-          this.setState({ books })
-        })
+ 
+    static propTypes = {
+        books : PropTypes.array.isRequired,
+        updateBookShelf : PropTypes.func.isRequired
       }
-   
+    
     render() {
-
+        const { books, updateBookShelf } = this.props
         return (
             <div className="list-books">
                 <div className="list-books-title">
@@ -27,10 +19,14 @@ class ListBooks extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <Shelf name='Currently Reading' books={this.state.books.filter(book => book.shelf ==="currentlyReading")}/>
-                        <Shelf name='Want to Read' books={this.state.books.filter(book => book.shelf ==="wantToRead")}/>
-                        <Shelf name='Read' books={this.state.books.filter(book => book.shelf ==="read")}/>
+                        { /* Assign updateBookShelf function to each shelf and categorically displays books in respective shelves */}
+                        <Shelf name='Currently Reading' updateBookShelf={updateBookShelf} books={books.filter(book => book.shelf ==="currentlyReading")}/>
+                        <Shelf name='Want to Read' updateBookShelf={updateBookShelf} books={books.filter(book => book.shelf ==="wantToRead")}/>
+                        <Shelf name='Read' updateBookShelf={updateBookShelf} books={books.filter(book => book.shelf ==="read")}/>
                     </div>
+                </div>
+                <div className='open-search'>
+                    <Link to='/search'>Add</Link>
                 </div>
             </div>
         )
