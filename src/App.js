@@ -1,9 +1,10 @@
 import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import './App.css'
+import * as BooksAPI from './BooksAPI'
 import ListBooks from './ListBooks'
 import SearchBook from './SearchBook'
-import * as BooksAPI from './BooksAPI'
-import { Route } from 'react-router-dom'
-import './App.css'
+import NoMatch from './NoMatch'
 
 class BooksApp extends React.Component {
   state = {
@@ -30,26 +31,32 @@ class BooksApp extends React.Component {
   render() {
 
     return (
+      <Router>
       <div>
       {
-        /* Use React Route to navigate between search and main page
+        /* Use React Route to navigate between search, main and NoMatch components.
         Pass the list of books, onChange function for shelf as props 
         for SearchBook and ListBooks components */}
-        <Route path ='/search' render = {() =>(
+        <Switch>
+        <Route exact path='/search' render={() =>(
           <SearchBook
-          books = {this.state.books}
-          updateBookShelf = {this.updateBookShelf}
+          books={this.state.books}
+          updateBookShelf={this.updateBookShelf}
           />
         )}
         />
-        <Route exact path ='/' render = {() => (
+        <Route exact path='/' render={() => (
           <ListBooks 
-          books = {this.state.books}
-          updateBookShelf = {this.updateBookShelf}
+          books={this.state.books}
+          updateBookShelf={this.updateBookShelf}
           />
           )} 
         />
+        <Route component={NoMatch} />
+        </Switch>
       </div>
+      </Router>
+
     )
   }
 }
