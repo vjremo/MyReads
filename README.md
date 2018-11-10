@@ -76,7 +76,7 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 ## References
 
 * Source [repository](https://github.com/udacity/reactnd-project-myreads-starter) by Udacity
-* Node package manger - [npm](https://www.npmjs.com/get-npm)
-* npm sort-by[Link](https://www.npmjs.com/package/sort-by)
+* Node package manger [npm](https://www.npmjs.com/get-npm)
+* npm sort-by [Link](https://www.npmjs.com/package/sort-by)
 * react-router-dom [Link](https://reacttraining.com/react-router/core/guides/philosophy)
-* Ryan Waite's project tutorial[Link](https://www.youtube.com/watch?v=acJHkd6K5kI&t=4158s)
+* Ryan Waite's project tutorial [Link](https://www.youtube.com/watch?v=acJHkd6K5kI&t=4158s)
