@@ -20,9 +20,9 @@ class ListBooks extends Component {
                 <div className="list-books-content">
                     <div>
                         { /* Assign updateBookShelf function to each shelf and categorically displays books in respective shelves */}
-                        <Shelf name='Currently Reading' updateBookShelf={updateBookShelf} books={books.filter(book => book.shelf ==="currentlyReading")}/>
-                        <Shelf name='Want to Read' updateBookShelf={updateBookShelf} books={books.filter(book => book.shelf ==="wantToRead")}/>
-                        <Shelf name='Read' updateBookShelf={updateBookShelf} books={books.filter(book => book.shelf ==="read")}/>
+                        <Shelf name='Currently Reading' updateBookShelf={updateBookShelf} books = {books.filter(book => book.shelf ==="currentlyReading")}/>
+                        <Shelf name='Want to Read' updateBookShelf={updateBookShelf} books = {books.filter(book => book.shelf ==="wantToRead")}/>
+                        <Shelf name='Read' updateBookShelf={updateBookShelf} books = {books.filter(book => book.shelf ==="read")}/>
                     </div>
                 </div>
                 <div className='open-search'>

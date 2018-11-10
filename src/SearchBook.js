@@ -31,7 +31,7 @@ class SearchBook extends Component {
     const { query } = this.state
     const {  books } = this.props
 
-    if(query===''||query === undefined){
+    if(query ===''||query === undefined){
       return this.setState({results : [] })
     }
 
@@ -47,13 +47,13 @@ class SearchBook extends Component {
       }else{
         //Iterate through books and assign shelf value for the books in Main page (ListBooks)
         response.forEach(book =>{
-          let foundBook = books.filter(searchBook => searchBook.id===book.id)
+          let foundBook = books.filter(searchBook => searchBook.id === book.id)
           if(foundBook[0]){
             book.shelf = foundBook[0].shelf
           }
         })
         //Sort books by title
-        if(response.length!=0) {
+        if(response.length !== 0) {
           response.sort(sortBy('title'))
         }
         /*Returns books which match the query-search terms as listed here :
@@ -70,13 +70,13 @@ class SearchBook extends Component {
         return (
             <div className="search-books">
             <div className="search-books-bar">
-              <Link className="close-search" to='/'>Close</Link>
+              <Link className="close-search" to ='/'>Close</Link>
               <div className="search-books-input-wrapper">
                 
-                <input type="text" 
+                <input type ="text" 
                 value = {this.state.query} 
-                placeholder="Search by title or author"
-                onChange={(event) => this.updateQuery(event.target.value)}/>
+                placeholder ="Search by title or author"
+                onChange = {(event) => this.updateQuery(event.target.value)}/>
                 
               </div>
             </div>
@@ -84,7 +84,7 @@ class SearchBook extends Component {
               <ol className="books-grid">
               {
                 /*Display the books returned in search response*/
-                this.state.results.map((book)=><Book book={book} key={book.id} updateBookShelf={updateBookShelf}/>)
+                this.state.results.map((book) =><Book book ={book} key = {book.id} updateBookShelf ={updateBookShelf}/>)
               }
               </ol>
             </div>
